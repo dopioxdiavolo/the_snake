@@ -14,10 +14,10 @@ LEFT = (-1, 0)
 RIGHT = (1, 0)
 
 # Цвета
-BOARD_BACKGROUND_COLOR = (0, 0, 0)    # Чёрный фон
-BORDER_COLOR = (93, 216, 228)         # Цвет границы ячейки
-APPLE_COLOR = (255, 0, 0)             # Цвет яблока
-SNAKE_COLOR = (0, 255, 0)             # Цвет змейки
+BOARD_BACKGROUND_COLOR = (0, 0, 0)  # Чёрный фон
+BORDER_COLOR = (93, 216, 228)  # Цвет границы ячейки
+APPLE_COLOR = (255, 0, 0)  # Цвет яблока
+SNAKE_COLOR = (0, 255, 0)  # Цвет змейки
 
 # Скорость движения змейки
 SPEED = 10
@@ -25,7 +25,7 @@ SPEED = 10
 # Настройка игрового окна
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
-pygame.display.set_caption('Змейка')
+pygame.display.set_caption("Змейка")
 clock = pygame.time.Clock()
 
 
@@ -51,8 +51,10 @@ class Apple(GameObject):
 
     def randomize_position(self):
         """Устанавливает случайное положение яблока на игровом поле."""
-        self.position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
-                         randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
+        self.position = (
+            randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+            randint(0, GRID_HEIGHT - 1) * GRID_SIZE,
+        )
 
     def draw(self):
         """Отрисовывает яблоко на экране."""
@@ -82,8 +84,10 @@ class Snake(GameObject):
         """Обновляет позицию змейки."""
         head_x, head_y = self.get_head_position()
         dx, dy = self.direction
-        new_head_position = ((head_x + dx * GRID_SIZE) % SCREEN_WIDTH,
-                             (head_y + dy * GRID_SIZE) % SCREEN_HEIGHT)
+        new_head_position = (
+            (head_x + dx * GRID_SIZE) % SCREEN_WIDTH,
+            (head_y + dy * GRID_SIZE) % SCREEN_HEIGHT,
+        )
 
         # Проверка на столкновение с собой
         if new_head_position in self.positions[2:]:
@@ -160,5 +164,5 @@ def main():
         pygame.display.update()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
